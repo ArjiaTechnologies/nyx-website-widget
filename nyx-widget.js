@@ -2,6 +2,17 @@
   if (window.__ARJIA_NYX_WIDGET__) return
   window.__ARJIA_NYX_WIDGET__ = true
 
+  const mobileViewportQuery = window.matchMedia?.("(max-width: 600px)")
+  if (mobileViewportQuery?.matches) {
+    const viewportMeta = document.querySelector('meta[name="viewport"]')
+    if (viewportMeta) {
+      const directives = viewportMeta.content.split(",").map(value => value.trim()).filter(Boolean)
+      if (!directives.some(value => value.toLowerCase().startsWith("initial-scale="))) directives.push("initial-scale=1")
+      if (!directives.some(value => value.toLowerCase().startsWith("viewport-fit="))) directives.push("viewport-fit=cover")
+      viewportMeta.content = directives.join(", ")
+    }
+  }
+
   const script = document.currentScript
   const config = window.NYX_CONFIG || {}
   const base = String(config.apiBaseUrl || script?.dataset.apiBase || "").trim().replace(/\/+$/, "")
@@ -16,7 +27,7 @@
       @keyframes nx-thinking-ring-a{to{--nx-thinking-angle-a:378deg}}
       @keyframes nx-thinking-ring-b{to{--nx-thinking-angle-b:-218deg}}
       #arjia-nyx-widget,#arjia-nyx-widget *{box-sizing:border-box}
-      #arjia-nyx-widget{--nx-right:24px;--nx-bottom:24px;position:fixed;z-index:2147482000;color:#f7f8fb;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+      #arjia-nyx-widget{--nx-right:24px;--nx-bottom:24px;position:fixed;z-index:2147482000;color:#f7f8fb;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%;text-size-adjust:100%}
       #arjia-nyx-widget button,#arjia-nyx-widget textarea{font:inherit}
       .nx-shell{position:fixed;right:var(--nx-right);bottom:var(--nx-bottom);width:108px;height:38px;border-radius:24px;isolation:isolate;filter:drop-shadow(0 18px 34px #0006);backdrop-filter:blur(34px) saturate(175%) contrast(1.1);-webkit-backdrop-filter:blur(34px) saturate(175%) contrast(1.1);transition:width .72s cubic-bezier(.76,0,.16,1),height .86s cubic-bezier(.76,0,.16,1)}
       .nx-shell:before{content:"";position:absolute;z-index:-2;inset:-1px;padding:1px;border-radius:inherit;background:conic-gradient(from var(--nx-angle),#2edbff,#4df08f,#ff8fa3,#ff334d,#ff8fa3,#9e66ff,#2edbff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-ring 5.2s linear infinite;animation-play-state:paused;opacity:0;transition:opacity .28s ease;pointer-events:none}
@@ -74,7 +85,7 @@
         .nx-shell[data-phase="widening"],.nx-shell[data-phase="opening"],.nx-shell[data-phase="open"],.nx-shell[data-phase="closingHeight"]{width:calc(100vw - 24px)}
         .nx-shell[data-phase="opening"],.nx-shell[data-phase="open"]{height:min(620px,calc(100dvh - 24px))}
         .nx-actions button{width:40px;height:40px}
-        .nx-composer textarea{font-size:16px;line-height:1.25;touch-action:manipulation}
+        .nx-composer textarea{font-size:17px!important;line-height:1.25;-webkit-appearance:none;appearance:none;touch-action:manipulation}
         .nx-shell[data-keyboard="true"]{left:calc(var(--nx-vv-left) + 8px);top:calc(var(--nx-vv-top) + 8px);right:auto;bottom:auto;width:calc(var(--nx-vv-width) - 16px);height:calc(var(--nx-vv-height) - 16px);max-height:none;transition:width .22s ease,height .22s ease,top .22s ease,left .22s ease}
         .nx-shell[data-keyboard="true"] .nx-head{min-height:48px;padding:8px 10px 6px 13px}
         .nx-shell[data-keyboard="true"] .nx-brand{top:10px}
@@ -107,11 +118,14 @@
   const shell = $(".nx-shell"), panel = $(".nx-panel"), feed = $(".nx-feed"), thread = $(".nx-thread"), welcome = $(".nx-welcome"), intro = $(".nx-intro"), headSlot = $(".nx-head-slot"), impact = $(".nx-impact"), impactDetail = $(".nx-impact-detail")
   const textarea = $("textarea"), composer = $(".nx-composer"), sendButton = $(".nx-composer button"), statusCopy = $(".nx-status-copy")
   const impactElectricity = $(".nx-impact-electricity"), impactEmissions = $(".nx-impact-emissions"), impactState = $(".nx-impact-state"), impactDetailState = $(".nx-impact-detail-state"), impactDetailTotal = $(".nx-impact-detail-total")
-  const mobileViewportQuery = window.matchMedia?.("(max-width: 600px)")
   let mobileViewportMaxHeight = window.visualViewport?.height || window.innerHeight
   let mobileComposerFocused = false
   let phase = "closed", timers = [], status = base ? "connecting" : "preview", busy = false, controller = null, typingGlowTimer = null, thinkingGlowFrame = null, thinkingGlowTick = 0, thinkingSourceTick = 0, thinkingDotPhase = -1, healthFailures = 0, healthInFlight = false, impactCompact = false, impactAnimation = null, impactValues = null, impactResponseValues = {electricityWh:0,emissionsG:0}, impactMethod = "pending", impactScope = "session", impactCompletedResponses = 0, impactEstimatedResponses = 0, impactMovingUntil = 0, impactDetailPhase = "closed", impactDetailTimers = [], impactDetailCloseTimer = null, introExiting = false, introDismissed = false, introExitTimer = null
   const messages = []
+  const lockMobileComposerScale = () => {
+    if (mobileViewportQuery?.matches) textarea.style.setProperty("font-size","17px","important")
+  }
+  lockMobileComposerScale()
   const clearTimers = () => { timers.forEach(clearTimeout); timers = [] }
   const setPhase = value => { phase = value; shell.dataset.phase = value; panel.setAttribute("aria-hidden", String(!["opening","open","closingHeight"].includes(value))) }
   const syncMobileViewport = () => {
@@ -477,7 +491,9 @@
   const syncComposer = ({typing=false}={}) => { if(typing)pulseComposerGlow();sendButton.disabled=busy||status!=="online"||!textarea.value.trim() }
   composer.addEventListener("submit",event=>{event.preventDefault();const question=textarea.value.trim();if(!question)return;textarea.value="";syncComposer();ask(question)})
   textarea.addEventListener("input",()=>syncComposer({typing:true}))
-  textarea.addEventListener("focus",()=>{mobileComposerFocused=true;syncMobileViewport();setTimeout(syncMobileViewport,80);setTimeout(syncMobileViewport,260)})
+  textarea.addEventListener("pointerdown",lockMobileComposerScale,{passive:true})
+  textarea.addEventListener("touchstart",lockMobileComposerScale,{passive:true})
+  textarea.addEventListener("focus",()=>{lockMobileComposerScale();mobileComposerFocused=true;syncMobileViewport();setTimeout(syncMobileViewport,80);setTimeout(syncMobileViewport,260)})
   textarea.addEventListener("blur",()=>{mobileComposerFocused=false;setTimeout(syncMobileViewport,80)})
   textarea.addEventListener("keydown",event=>{if(event.key==="Enter"&&!event.shiftKey){event.preventDefault();$(".nx-composer").requestSubmit()}})
   document.addEventListener("keydown",event=>{if(event.key==="Escape")close()})
