@@ -69,7 +69,23 @@
       .nx-activity:after{z-index:-1;inset:-7px;padding:7px;background:conic-gradient(from var(--nx-thinking-angle-b),#2edbffbf 0%,#4df08fb8 16%,#ff8fa3b8 34%,#ff334db8 50%,#ff8fa3b8 66%,#9e66ffbf 84%,#2edbffbf 100%);filter:blur(8px) saturate(1.04);opacity:.44;transform:translateZ(0);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-thinking-ring-b 9.4s linear infinite}
       .nx-thinking-dots{display:inline}
       .nx-foot{padding:9px 13px 11px;border-top:1px solid #ffffff14;background:#05080e2e}.nx-composer{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) 32px;align-items:center;gap:5px;padding:5px;border:1px solid #dfe4ec26;border-radius:24px;background:#ffffff05;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:border-color .70s ease-in-out,box-shadow .70s ease-in-out}.nx-composer:before,.nx-composer:after{content:"";position:absolute;z-index:-1;inset:-1.5px;padding:1.5px;border-radius:inherit;background:conic-gradient(from var(--nx-angle),#2edbff,#4df08f,#ff8fa3,#ff334d,#ff8fa3,#9e66ff,#2edbff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;animation:nx-ring 5.2s linear infinite;animation-play-state:paused;transition:opacity .70s ease-in-out}.nx-composer:after{inset:-6px;padding:4px;filter:blur(8px);opacity:0}.nx-composer[data-active="true"]{border-color:transparent;box-shadow:0 0 22px #788dff20;transition-duration:.55s}.nx-composer[data-active="true"]:before{opacity:1;animation-play-state:running;transition-duration:.55s}.nx-composer[data-active="true"]:after{opacity:.2;animation-play-state:running;transition-duration:.55s}.nx-composer textarea{width:100%;min-height:32px;max-height:94px;padding:8px 8px 6px;resize:none;border:0;outline:0;color:#f5f6f9;background:transparent;font-size:13px;line-height:1.35}.nx-composer textarea::placeholder{color:#ffffff57}.nx-composer button{align-self:center;display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid #ffffff1f;border-radius:50%;color:#fff;background:#ffffff12;cursor:pointer}.nx-composer button:disabled{opacity:.4}.nx-fine{display:flex;justify-content:space-between;margin:7px 3px 0;color:#ffffff45;font-size:6px;font-weight:760;letter-spacing:.09em;text-transform:uppercase}
-      @media(max-width:600px){#arjia-nyx-widget{--nx-right:12px;--nx-bottom:max(12px,env(safe-area-inset-bottom))}.nx-shell[data-phase="widening"],.nx-shell[data-phase="opening"],.nx-shell[data-phase="open"],.nx-shell[data-phase="closingHeight"]{width:calc(100vw - 24px)}.nx-shell[data-phase="opening"],.nx-shell[data-phase="open"]{height:min(620px,calc(100dvh - 24px))}.nx-actions button{width:40px;height:40px}}
+      @media(max-width:600px){
+        #arjia-nyx-widget{--nx-right:12px;--nx-bottom:max(12px,env(safe-area-inset-bottom));--nx-vv-left:0px;--nx-vv-top:0px;--nx-vv-width:100vw;--nx-vv-height:100dvh}
+        .nx-shell[data-phase="widening"],.nx-shell[data-phase="opening"],.nx-shell[data-phase="open"],.nx-shell[data-phase="closingHeight"]{width:calc(100vw - 24px)}
+        .nx-shell[data-phase="opening"],.nx-shell[data-phase="open"]{height:min(620px,calc(100dvh - 24px))}
+        .nx-actions button{width:40px;height:40px}
+        .nx-composer textarea{font-size:16px;line-height:1.25;touch-action:manipulation}
+        .nx-shell[data-keyboard="true"]{left:calc(var(--nx-vv-left) + 8px);top:calc(var(--nx-vv-top) + 8px);right:auto;bottom:auto;width:calc(var(--nx-vv-width) - 16px);height:calc(var(--nx-vv-height) - 16px);max-height:none;transition:width .22s ease,height .22s ease,top .22s ease,left .22s ease}
+        .nx-shell[data-keyboard="true"] .nx-head{min-height:48px;padding:8px 10px 6px 13px}
+        .nx-shell[data-keyboard="true"] .nx-brand{top:10px}
+        .nx-shell[data-keyboard="true"] .nx-brand small{margin-top:5px}
+        .nx-shell[data-keyboard="true"] .nx-feed{padding:10px 12px 8px;mask-image:linear-gradient(to bottom,transparent,#000 10px,#000 calc(100% - 14px),transparent)}
+        .nx-shell[data-keyboard="true"] .nx-welcome{display:none}
+        .nx-shell[data-keyboard="true"] .nx-thread{min-height:100%;align-content:end}
+        .nx-shell[data-keyboard="true"] .nx-impact{display:none}
+        .nx-shell[data-keyboard="true"] .nx-foot{padding:6px 8px 7px}
+        .nx-shell[data-keyboard="true"] .nx-fine{display:none}
+      }
       @supports not ((backdrop-filter:blur(2px)) or (-webkit-backdrop-filter:blur(2px))){.nx-glass{background:#111722e8}}
       @media(prefers-reduced-motion:reduce){#arjia-nyx-widget *,#arjia-nyx-widget *:before,#arjia-nyx-widget *:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
     </style>
@@ -91,10 +107,32 @@
   const shell = $(".nx-shell"), panel = $(".nx-panel"), feed = $(".nx-feed"), thread = $(".nx-thread"), welcome = $(".nx-welcome"), intro = $(".nx-intro"), headSlot = $(".nx-head-slot"), impact = $(".nx-impact"), impactDetail = $(".nx-impact-detail")
   const textarea = $("textarea"), composer = $(".nx-composer"), sendButton = $(".nx-composer button"), statusCopy = $(".nx-status-copy")
   const impactElectricity = $(".nx-impact-electricity"), impactEmissions = $(".nx-impact-emissions"), impactState = $(".nx-impact-state"), impactDetailState = $(".nx-impact-detail-state"), impactDetailTotal = $(".nx-impact-detail-total")
+  const mobileViewportQuery = window.matchMedia?.("(max-width: 600px)")
+  let mobileViewportMaxHeight = window.visualViewport?.height || window.innerHeight
+  let mobileComposerFocused = false
   let phase = "closed", timers = [], status = base ? "connecting" : "preview", busy = false, controller = null, typingGlowTimer = null, thinkingGlowFrame = null, thinkingGlowTick = 0, thinkingSourceTick = 0, thinkingDotPhase = -1, healthFailures = 0, healthInFlight = false, impactCompact = false, impactAnimation = null, impactValues = null, impactResponseValues = {electricityWh:0,emissionsG:0}, impactMethod = "pending", impactScope = "session", impactCompletedResponses = 0, impactEstimatedResponses = 0, impactMovingUntil = 0, impactDetailPhase = "closed", impactDetailTimers = [], impactDetailCloseTimer = null, introExiting = false, introDismissed = false, introExitTimer = null
   const messages = []
   const clearTimers = () => { timers.forEach(clearTimeout); timers = [] }
   const setPhase = value => { phase = value; shell.dataset.phase = value; panel.setAttribute("aria-hidden", String(!["opening","open","closingHeight"].includes(value))) }
+  const syncMobileViewport = () => {
+    if (!mobileViewportQuery?.matches) {
+      shell.dataset.keyboard = "false"
+      return
+    }
+    const viewport = window.visualViewport
+    const width = Math.max(1,viewport?.width || window.innerWidth)
+    const height = Math.max(1,viewport?.height || window.innerHeight)
+    const left = Math.max(0,viewport?.offsetLeft || 0)
+    const top = Math.max(0,viewport?.offsetTop || 0)
+    if (!mobileComposerFocused) mobileViewportMaxHeight = Math.max(mobileViewportMaxHeight,height)
+    const keyboardOpen = mobileComposerFocused && height < mobileViewportMaxHeight - 80
+    root.style.setProperty("--nx-vv-left",`${left}px`)
+    root.style.setProperty("--nx-vv-top",`${top}px`)
+    root.style.setProperty("--nx-vv-width",`${width}px`)
+    root.style.setProperty("--nx-vv-height",`${height}px`)
+    shell.dataset.keyboard = String(keyboardOpen)
+    if (keyboardOpen) requestAnimationFrame(()=>feed.scrollTo({top:feed.scrollHeight,behavior:"auto"}))
+  }
   const setStatus = value => {
     status = value; shell.dataset.status = value
     statusCopy.textContent = value === "online" ? "Online" : value === "offline" ? "Unavailable" : value === "connecting" ? "Connecting" : "Preview"
@@ -105,10 +143,12 @@
     if (!["closed","closingHeight","closingWidth"].includes(phase)) return
     clearTimers(); setPhase("widening")
     timers.push(setTimeout(() => setPhase("opening"),720))
-    timers.push(setTimeout(() => { setPhase("open"); textarea.focus() },1580))
+    timers.push(setTimeout(() => { setPhase("open");if(!mobileViewportQuery?.matches)textarea.focus();syncMobileViewport() },1580))
   }
   const close = () => {
     if (["closed","closingHeight","closingWidth"].includes(phase)) return
+    if (mobileComposerFocused) textarea.blur()
+    syncMobileViewport()
     closeImpactDetail(true);clearTimers();setPhase("closingHeight")
     timers.push(setTimeout(() => setPhase("closingWidth"),860))
     timers.push(setTimeout(() => setPhase("closed"),1580))
@@ -428,12 +468,17 @@
   impactDetail.addEventListener("mouseenter",openImpactDetail)
   impactDetail.addEventListener("mouseleave",scheduleImpactDetailClose)
   window.addEventListener("resize",positionImpactDetail)
+  window.visualViewport?.addEventListener("resize",syncMobileViewport)
+  window.visualViewport?.addEventListener("scroll",syncMobileViewport)
+  window.addEventListener("orientationchange",()=>setTimeout(syncMobileViewport,120))
   const setComposerGlow = active => { composer.dataset.active = String(active) }
   const stopComposerGlow = () => { if(typingGlowTimer!==null)clearTimeout(typingGlowTimer);typingGlowTimer=null;setComposerGlow(false) }
   const pulseComposerGlow = () => { if(typingGlowTimer!==null)clearTimeout(typingGlowTimer);setComposerGlow(true);typingGlowTimer=setTimeout(()=>{typingGlowTimer=null;setComposerGlow(false)},400) }
   const syncComposer = ({typing=false}={}) => { if(typing)pulseComposerGlow();sendButton.disabled=busy||status!=="online"||!textarea.value.trim() }
   composer.addEventListener("submit",event=>{event.preventDefault();const question=textarea.value.trim();if(!question)return;textarea.value="";syncComposer();ask(question)})
   textarea.addEventListener("input",()=>syncComposer({typing:true}))
+  textarea.addEventListener("focus",()=>{mobileComposerFocused=true;syncMobileViewport();setTimeout(syncMobileViewport,80);setTimeout(syncMobileViewport,260)})
+  textarea.addEventListener("blur",()=>{mobileComposerFocused=false;setTimeout(syncMobileViewport,80)})
   textarea.addEventListener("keydown",event=>{if(event.key==="Enter"&&!event.shiftKey){event.preventDefault();$(".nx-composer").requestSubmit()}})
   document.addEventListener("keydown",event=>{if(event.key==="Escape")close()})
   const probe = async path => { const aborter=new AbortController(),timeout=setTimeout(()=>aborter.abort(),3500);try{return (await fetch(`${base}${path}`,{cache:"no-store",signal:aborter.signal})).ok}catch{return false}finally{clearTimeout(timeout)}}
@@ -455,5 +500,5 @@
     impactCompletedResponses = storedImpact.completedResponses
     impactEstimatedResponses = storedImpact.estimatedResponses
   }
-  updateImpact();syncComposer();setStatus(status);health();refreshGlobalImpact();if(base){setInterval(health,12000);setInterval(refreshGlobalImpact,15000)}
+  syncMobileViewport();updateImpact();syncComposer();setStatus(status);health();refreshGlobalImpact();if(base){setInterval(health,12000);setInterval(refreshGlobalImpact,15000)}
 })()
