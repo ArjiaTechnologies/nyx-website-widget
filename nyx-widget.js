@@ -95,7 +95,7 @@
         .nx-shell[data-phase="opening"],.nx-shell[data-phase="open"]{height:min(620px,calc(100dvh - 24px))}
         .nx-actions button{width:40px;height:40px}
         .nx-composer{padding:5px}
-        .nx-composer textarea{font-size:17px!important;line-height:22px;transform:translateY(-1px);-webkit-appearance:none;appearance:none;touch-action:manipulation}
+        .nx-composer textarea{font-size:17px!important;line-height:22px;transform:translateY(-2px);-webkit-appearance:none;appearance:none;touch-action:manipulation}
         .nx-shell[data-keyboard="true"]{left:calc(var(--nx-vv-left) + 8px);top:calc(var(--nx-vv-top) + 8px);right:auto;bottom:auto;width:calc(var(--nx-vv-width) - 16px);height:calc(var(--nx-vv-height) - 16px);max-height:none;transition:width .22s ease,height .22s ease,top .22s ease,left .22s ease}
         .nx-shell[data-keyboard="true"] .nx-head{min-height:48px;padding:8px 10px 6px 13px}
         .nx-shell[data-keyboard="true"] .nx-brand{top:10px}
