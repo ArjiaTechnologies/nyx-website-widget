@@ -16,8 +16,13 @@
   const script = document.currentScript
   const config = window.NYX_CONFIG || {}
   // Keep the original outer thinking glow available as an opt-in reference.
-  // Set window.NYX_CONFIG.thinkingGlow = true before loading this script to restore it.
-  const thinkingGlowEnabled = config.thinkingGlow === true
+  // Use "legacy" to restore it, false to remove it, or omit the setting for the tighter glow.
+  const thinkingGlowMode = config.thinkingGlow === true || config.thinkingGlow === "legacy" ? "legacy" : config.thinkingGlow === false ? "off" : "tight"
+  const thinkingGlow = thinkingGlowMode === "legacy"
+    ? { inset: "-18px", padding: "18px", blur: "12px", opacity: ".36" }
+    : thinkingGlowMode === "off"
+      ? { inset: "-6px", padding: "6px", blur: "4px", opacity: "0" }
+      : { inset: "-6px", padding: "6px", blur: "4px", opacity: ".14" }
   const base = String(config.apiBaseUrl || script?.dataset.apiBase || "").trim().replace(/\/+$/, "")
   const root = document.createElement("div")
   root.id = "arjia-nyx-widget"
@@ -30,7 +35,7 @@
       @keyframes nx-thinking-ring-a{to{--nx-thinking-angle-a:378deg}}
       @keyframes nx-thinking-ring-b{to{--nx-thinking-angle-b:-218deg}}
       #arjia-nyx-widget,#arjia-nyx-widget *{box-sizing:border-box}
-      #arjia-nyx-widget{--nx-right:24px;--nx-bottom:24px;--nx-thinking-glow-opacity:${thinkingGlowEnabled ? ".36" : "0"};position:fixed;z-index:2147482000;color:#f7f8fb;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+      #arjia-nyx-widget{--nx-right:24px;--nx-bottom:24px;--nx-thinking-glow-inset:${thinkingGlow.inset};--nx-thinking-glow-padding:${thinkingGlow.padding};--nx-thinking-glow-blur:${thinkingGlow.blur};--nx-thinking-glow-opacity:${thinkingGlow.opacity};position:fixed;z-index:2147482000;color:#f7f8fb;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-text-size-adjust:100%;text-size-adjust:100%}
       #arjia-nyx-widget button,#arjia-nyx-widget textarea{font:inherit}
       .nx-shell{position:fixed;right:var(--nx-right);bottom:var(--nx-bottom);width:108px;height:38px;border-radius:24px;isolation:isolate;filter:drop-shadow(0 18px 34px #0006);backdrop-filter:blur(34px) saturate(175%) contrast(1.1);-webkit-backdrop-filter:blur(34px) saturate(175%) contrast(1.1);transition:width .72s cubic-bezier(.76,0,.16,1),height .86s cubic-bezier(.76,0,.16,1)}
       .nx-shell:before{content:"";position:absolute;z-index:-2;inset:-1px;padding:1px;border-radius:inherit;background:conic-gradient(from var(--nx-angle),#2edbff,#4df08f,#ff8fa3,#ff334d,#ff8fa3,#9e66ff,#2edbff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-ring 5.2s linear infinite;animation-play-state:paused;opacity:0;transition:opacity .28s ease;pointer-events:none}
@@ -80,7 +85,7 @@
       .nx-activity>span{position:relative;z-index:1}
       .nx-activity:before,.nx-activity:after{content:"";position:absolute;border-radius:inherit;pointer-events:none}
       .nx-activity:before{z-index:0;inset:-1px;padding:1.5px;background:conic-gradient(from var(--nx-thinking-angle-a),#2edbfffa 0%,#4df08ff5 16%,#ff8fa3f5 34%,#ff334df0 50%,#ff8fa3f5 66%,#9e66fffa 84%,#2edbfffa 100%);filter:saturate(1.02);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-thinking-ring-a 6.8s linear infinite}
-      .nx-activity:after{z-index:-1;inset:-18px;padding:18px;background:conic-gradient(from var(--nx-thinking-angle-b),#2edbffbf 0%,#4df08fb8 16%,#ff8fa3b8 34%,#ff334db8 50%,#ff8fa3b8 66%,#9e66ffbf 84%,#2edbffbf 100%);filter:blur(12px) saturate(1.04);opacity:var(--nx-thinking-glow-opacity);transform:translateZ(0);will-change:filter,transform,opacity;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-thinking-ring-b 9.4s linear infinite}
+      .nx-activity:after{z-index:-1;inset:var(--nx-thinking-glow-inset);padding:var(--nx-thinking-glow-padding);background:conic-gradient(from var(--nx-thinking-angle-b),#2edbffbf 0%,#4df08fb8 16%,#ff8fa3b8 34%,#ff334db8 50%,#ff8fa3b8 66%,#9e66ffbf 84%,#2edbffbf 100%);filter:blur(var(--nx-thinking-glow-blur)) saturate(1.04);opacity:var(--nx-thinking-glow-opacity);transform:translateZ(0);will-change:filter,transform,opacity;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-thinking-ring-b 9.4s linear infinite}
       .nx-thinking-dots{display:inline}
       .nx-foot{padding:9px 13px 11px;border-top:1px solid #ffffff14;background:#05080e2e}.nx-composer{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) 32px;align-items:center;gap:5px;padding:5px;border:1px solid #dfe4ec26;border-radius:24px;background:#ffffff05;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:border-color .70s ease-in-out,box-shadow .70s ease-in-out}.nx-composer:before,.nx-composer:after{content:"";position:absolute;z-index:-1;inset:-1.5px;padding:1.5px;border-radius:inherit;background:conic-gradient(from var(--nx-angle),#2edbff,#4df08f,#ff8fa3,#ff334d,#ff8fa3,#9e66ff,#2edbff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;animation:nx-ring 5.2s linear infinite;animation-play-state:paused;transition:opacity .70s ease-in-out}.nx-composer:after{inset:-6px;padding:4px;filter:blur(8px);opacity:0}.nx-composer[data-active="true"]{border-color:transparent;box-shadow:0 0 22px #788dff20;transition-duration:.55s}.nx-composer[data-active="true"]:before{opacity:1;animation-play-state:running;transition-duration:.55s}.nx-composer[data-active="true"]:after{opacity:.2;animation-play-state:running;transition-duration:.55s}.nx-composer textarea{width:100%;min-height:32px;max-height:94px;padding:8px 8px 6px;resize:none;border:0;outline:0;color:#f5f6f9;background:transparent;font-size:13px;line-height:1.35}.nx-composer textarea::placeholder{color:#ffffff57}.nx-composer button{align-self:center;display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid #ffffff1f;border-radius:50%;color:#fff;background:#ffffff12;cursor:pointer}.nx-composer button:disabled{opacity:.4}.nx-fine{display:flex;justify-content:space-between;margin:7px 3px 0;color:#ffffff45;font-size:6px;font-weight:760;letter-spacing:.09em;text-transform:uppercase}
       @media(max-width:600px){
