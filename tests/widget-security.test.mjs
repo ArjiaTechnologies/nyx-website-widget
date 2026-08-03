@@ -43,7 +43,8 @@ test("long message bubbles use natural height and safe wrapping", () => {
 
 test("mobile and reduced-motion protections are retained", () => {
   assert.match(source, /@media\(max-width:600px\)/)
-  assert.match(source, /\.nx-head-slot\{width:76px\}/)
+  assert.match(source, /\.nx-head-slot\{width:98px\}/)
+  assert.match(source, /\.nx-impact\[data-compact="true"\]\{flex-basis:98px;width:98px;padding-inline:5px;gap:3px\}/)
   assert.match(source, /prefersReducedMotion/)
   assert.match(source, /@media\(prefers-reduced-motion:reduce\)/)
 })
