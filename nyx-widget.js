@@ -65,12 +65,14 @@
       .nx-feed{position:relative;min-height:0;padding:18px 15px 16px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffffff24 transparent;mask-image:linear-gradient(to bottom,transparent,#000 18px,#000 calc(100% - 24px),transparent)}
       .nx-welcome{display:grid;align-content:start;min-height:100%;gap:16px;padding:12px 4px 4px}.nx-welcome[hidden],.nx-intro[hidden]{display:none!important}.nx-intro{display:grid;max-height:180px;overflow:hidden;transform-origin:left center;transition:max-height .42s cubic-bezier(.76,0,.16,1) .48s,opacity .3s ease .5s,filter .3s ease .5s}.nx-intro[data-exiting="true"]{max-height:0;opacity:0;filter:blur(8px)}.nx-intro h2{max-width:310px;margin:0 0 7px;font-size:27px;line-height:1.05;letter-spacing:-.045em}.nx-intro p{max-width:340px;margin:0;color:#ffffff86;font-size:11px;line-height:1.54}.nx-intro-word{display:inline-block;white-space:nowrap}.nx-intro-char{display:inline-block;will-change:opacity,filter,transform}.nx-intro[data-exiting="true"] .nx-intro-char{animation:nx-intro-char-out .38s cubic-bezier(.22,1,.36,1) forwards;animation-delay:calc(var(--nx-char) * 4ms)}
       @keyframes nx-intro-char-out{0%{opacity:1;filter:blur(0);transform:translate3d(0,0,0)}100%{opacity:0;filter:blur(7px);transform:translate3d(0,-5px,0) scale(.96)}}
-      .nx-impact{position:relative;isolation:isolate;display:grid;grid-template-columns:auto 1fr 1px 1fr auto;align-items:center;gap:10px;width:min(100%,340px);min-height:58px;padding:9px 12px;border:1px solid #7bc8ff87;border-radius:999px;background:linear-gradient(115deg,#75caff14,#4d89ff0b 46%,#81d9ff10),#07101a52;box-shadow:inset 0 1px #ffffff29,inset 0 0 0 1px #66baff19,0 0 18px #278dff25,0 0 42px #3d96ff12;overflow:hidden;color:#f8fbff;cursor:help;outline:0;transform-origin:center top;transition:width .58s cubic-bezier(.22,1,.36,1),min-height .58s cubic-bezier(.22,1,.36,1),padding .58s cubic-bezier(.22,1,.36,1),gap .58s cubic-bezier(.22,1,.36,1),box-shadow .4s ease}
+      .nx-status-strip{display:flex;flex-wrap:wrap;align-items:center;gap:6px;width:min(100%,340px);transform-origin:center top}.nx-status-strip[data-compact="true"]{flex-wrap:nowrap;gap:5px;width:175px}.nx-status-strip[data-compact="false"] .nx-security{margin-left:auto}
+      .nx-impact{position:relative;isolation:isolate;display:grid;grid-template-columns:auto 1fr 1px 1fr auto;align-items:center;gap:10px;width:100%;min-height:58px;padding:9px 12px;border:1px solid #7bc8ff87;border-radius:999px;background:linear-gradient(115deg,#75caff14,#4d89ff0b 46%,#81d9ff10),#07101a52;box-shadow:inset 0 1px #ffffff29,inset 0 0 0 1px #66baff19,0 0 18px #278dff25,0 0 42px #3d96ff12;overflow:hidden;color:#f8fbff;cursor:help;outline:0;transform-origin:center top;transition:width .58s cubic-bezier(.22,1,.36,1),min-height .58s cubic-bezier(.22,1,.36,1),padding .58s cubic-bezier(.22,1,.36,1),gap .58s cubic-bezier(.22,1,.36,1),box-shadow .4s ease}
       .nx-impact:before{content:"";position:absolute;z-index:-1;inset:-65% -18%;background:radial-gradient(circle at 35% 55%,#5fc7ff30,transparent 36%),radial-gradient(circle at 76% 35%,#628dff24,transparent 34%);filter:blur(13px);animation:nx-impact-breathe 3.8s ease-in-out infinite alternate;pointer-events:none}.nx-impact:after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 18px #63c7ff17;pointer-events:none}
       @keyframes nx-impact-breathe{from{opacity:.55;transform:translate3d(-2%,1%,0) scale(.96)}to{opacity:1;transform:translate3d(3%,-2%,0) scale(1.06)}}
       .nx-impact-live{display:grid;justify-items:center;gap:3px;color:#91d6ff;font-size:6px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}.nx-impact-live i{width:6px;height:6px;border-radius:50%;background:#70cdff;box-shadow:0 0 4px #70cdff,0 0 11px #38a7ff}
       .nx-impact-metric{display:grid;gap:2px;min-width:0}.nx-impact-metric strong{font-size:13px;font-weight:720;letter-spacing:-.025em;line-height:1;white-space:nowrap}.nx-impact-metric small{color:#ffffff5b;font-size:6px;font-weight:760;letter-spacing:.095em;line-height:1;text-transform:uppercase;white-space:nowrap}.nx-impact-divider{width:1px;height:24px;background:#ffffff1c}.nx-impact-state{max-width:50px;color:#8fd2ff8f;font-size:5.5px;font-weight:780;letter-spacing:.09em;line-height:1.25;text-align:right;text-transform:uppercase}
-      .nx-impact[data-compact="true"]{grid-template-columns:auto auto 1px auto;width:134px;min-height:28px;margin:0;padding:5px 6px;gap:4px;box-shadow:inset 0 1px #ffffff24,inset 0 0 0 1px #66baff15,0 0 13px #278dff20}.nx-impact[data-compact="true"] .nx-impact-live{display:flex;gap:0;font-size:0}.nx-impact[data-compact="true"] .nx-impact-live i{width:5px;height:5px}.nx-impact[data-compact="true"] .nx-impact-metric{display:flex;align-items:baseline;gap:2px}.nx-impact[data-compact="true"] .nx-impact-metric strong{font-size:7.5px}.nx-impact[data-compact="true"] .nx-impact-metric small{display:none}.nx-impact[data-compact="true"] .nx-impact-divider{height:12px}.nx-impact[data-compact="true"] .nx-impact-state{display:none}
+      .nx-impact[data-compact="true"]{flex:0 0 134px;grid-template-columns:auto auto 1px auto;width:134px;min-height:28px;margin:0;padding:5px 6px;gap:4px;box-shadow:inset 0 1px #ffffff24,inset 0 0 0 1px #66baff15,0 0 13px #278dff20}.nx-impact[data-compact="true"] .nx-impact-live{display:flex;gap:0;font-size:0}.nx-impact[data-compact="true"] .nx-impact-live i{width:5px;height:5px}.nx-impact[data-compact="true"] .nx-impact-metric{display:flex;align-items:baseline;gap:2px}.nx-impact[data-compact="true"] .nx-impact-metric strong{font-size:7.5px}.nx-impact[data-compact="true"] .nx-impact-metric small{display:none}.nx-impact[data-compact="true"] .nx-impact-divider{height:12px}.nx-impact[data-compact="true"] .nx-impact-state{display:none}
+      .nx-security{position:relative;display:flex;align-items:center;justify-content:center;gap:3px;width:48px;height:28px;padding:0 8px;border:1px solid #ffb47a55;border-radius:999px;color:#fff4e8;background:linear-gradient(135deg,#ffb26b16,#ff75830c 55%,#9a6cff12),#110d1059;box-shadow:inset 0 1px #ffffff24,inset 0 0 0 1px #ffb27a0f,0 0 12px #ff7f5012;cursor:pointer;outline:0;backdrop-filter:blur(18px) saturate(145%);-webkit-backdrop-filter:blur(18px) saturate(145%);transition:border-color .22s ease,box-shadow .22s ease,transform .22s cubic-bezier(.22,1,.36,1)}.nx-security:hover{border-color:#ffc18b91;box-shadow:inset 0 1px #ffffff2c,0 0 16px #ff89531f}.nx-security:focus-visible{outline:2px solid #fff;outline-offset:3px}.nx-security-emoji{font-size:12px;line-height:1}.nx-security-count{min-width:8px;font-size:8px;font-weight:800;line-height:1;text-align:center;font-variant-numeric:tabular-nums}.nx-status-strip[data-compact="true"] .nx-security{flex:0 0 36px;width:36px;padding:0 5px}.nx-security[data-pulse="true"]{animation:nx-security-pulse .38s cubic-bezier(.22,1,.36,1)}@keyframes nx-security-pulse{0%{transform:scale(1)}42%{transform:scale(1.15);border-color:#ffd2a8;box-shadow:inset 0 1px #fff5,0 0 20px #ff8d5540}100%{transform:scale(1)}}
       .nx-impact-detail{--nx-impact-detail-width:306px;--nx-impact-detail-height:232px;position:absolute;z-index:15;left:var(--nx-impact-detail-left,17px);top:var(--nx-impact-detail-top,80px);isolation:isolate;width:0;height:32px;padding:0;border:1px solid #79caff70;border-radius:18px;overflow:hidden;color:#f7faff;background:transparent;box-shadow:inset 0 1px #ffffff2b,inset 0 0 0 1px #70bfff13,0 18px 45px #0007,0 0 25px #358cff18;opacity:0;visibility:hidden;pointer-events:none;transform-origin:left top;transition:width .36s cubic-bezier(.76,0,.16,1),height .42s cubic-bezier(.76,0,.16,1),opacity .24s ease,visibility 0s linear .78s}
       .nx-impact-detail-glass{position:absolute;z-index:0;inset:0;border-radius:inherit;background:linear-gradient(145deg,#d9eeff18,#6489c90d 52%,#05081057),rgba(8,12,18,.84);backdrop-filter:blur(52px) saturate(150%) contrast(.94);-webkit-backdrop-filter:blur(52px) saturate(150%) contrast(.94);clip-path:inset(0 round 18px);-webkit-clip-path:inset(0 round 18px);transform:translateZ(0);pointer-events:none}
       .nx-impact-detail:before{content:"";position:absolute;z-index:1;inset:-40% -15%;background:radial-gradient(circle at 18% 30%,#5bc8ff24,transparent 36%),radial-gradient(circle at 86% 85%,#7476ff1c,transparent 38%);filter:blur(14px);pointer-events:none}
@@ -80,7 +82,8 @@
       .nx-impact-detail[data-phase="opening"],.nx-impact-detail[data-phase="open"]{height:var(--nx-impact-detail-height);pointer-events:auto}
       .nx-impact-detail-copy{position:relative;z-index:2;display:grid;align-content:start;gap:6px;width:var(--nx-impact-detail-width);padding:14px 16px;opacity:0;filter:blur(5px);transform:translateY(8px);transition:opacity .24s ease,filter .24s ease,transform .3s cubic-bezier(.22,1,.36,1)}.nx-impact-detail[data-phase="opening"] .nx-impact-detail-copy,.nx-impact-detail[data-phase="open"] .nx-impact-detail-copy{opacity:1;filter:none;transform:none;transition-delay:.12s}.nx-impact-detail-copy strong{font-size:13px;font-weight:760;letter-spacing:-.01em}.nx-impact-detail-copy p{margin:0;color:#ffffffa3;font-size:9.5px;line-height:1.48}.nx-impact-detail-grid{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:2px 0;padding:7px 0;border-top:1px solid #ffffff12;border-bottom:1px solid #ffffff12;font-size:7.5px;line-height:1.3}.nx-impact-detail-grid span{color:#ffffff70;text-transform:uppercase;letter-spacing:.07em}.nx-impact-detail-grid b{min-width:0;color:#d8eaff;font-weight:680;text-align:right}.nx-impact-detail-copy small{color:#8fd5ffad;font-size:6.5px;font-weight:760;letter-spacing:.09em;text-transform:uppercase}.nx-impact-detail-roadmap{color:#ffffff62!important}
       .nx-impact-detail-note{color:#ffffff72!important;font-size:6.25px!important;line-height:1.35;letter-spacing:.045em!important;text-transform:none!important}.nx-impact-detail-link{width:max-content;color:#9edaff;font-size:6.5px;font-weight:760;letter-spacing:.065em;text-decoration:none;text-transform:uppercase}.nx-impact-detail-link:hover,.nx-impact-detail-link:focus-visible{color:#fff;text-decoration:underline;text-underline-offset:2px}.nx-impact-detail-roadmap{color:#ffffff62!important}
-      .nx-thread{display:grid;gap:14px}.nx-welcome[hidden]+.nx-thread{min-height:100%;align-content:end}.nx-thread article{display:flex;flex-direction:column;align-items:flex-start}.nx-thread article.user{align-items:flex-end}.nx-thread label{margin:0 6px 5px;color:#ffffff9e;font-size:12px;font-weight:700}.nx-thread p{max-width:360px;margin:0;padding:9px 14px;border:1px solid #ffffff1f;border-radius:18px;color:#ffffffdd;background:#ffffff09;font-size:13px;line-height:1.42;white-space:pre-wrap}.nx-thread p a{color:#c7d8ff;text-decoration-color:#9eaeff8c;text-underline-offset:2px}.nx-thread p a:hover{color:#fff;text-decoration-color:#fff}.nx-thread article.user p{max-width:82%;border-radius:999px;background:#7a8cae20}
+      .nx-security-detail{--nx-security-detail-width:258px;--nx-security-detail-height:102px;position:absolute;z-index:16;left:var(--nx-security-detail-left,17px);top:var(--nx-security-detail-top,80px);isolation:isolate;width:0;height:28px;padding:0;border:1px solid #ffb47a64;border-radius:18px;overflow:hidden;color:#fff8f1;background:transparent;box-shadow:inset 0 1px #ffffff2b,inset 0 0 0 1px #ffb47a12,0 18px 45px #0007,0 0 22px #ff7a4012;opacity:0;visibility:hidden;pointer-events:none;transform-origin:right top;transition:width .34s cubic-bezier(.76,0,.16,1),height .38s cubic-bezier(.76,0,.16,1),opacity .22s ease,visibility 0s linear .72s}.nx-security-detail:before{content:"";position:absolute;z-index:0;inset:0;border-radius:inherit;background:linear-gradient(145deg,#fff1e817,#ff9c6709 52%,#08070a66),rgba(9,10,14,.88);backdrop-filter:blur(38px) saturate(145%);-webkit-backdrop-filter:blur(38px) saturate(145%);pointer-events:none}.nx-security-detail[data-phase="widening"],.nx-security-detail[data-phase="opening"],.nx-security-detail[data-phase="open"],.nx-security-detail[data-phase="closingHeight"]{width:var(--nx-security-detail-width);visibility:visible;opacity:1;transition-delay:0s}.nx-security-detail[data-phase="widening"],.nx-security-detail[data-phase="closingHeight"],.nx-security-detail[data-phase="closingWidth"]{height:28px}.nx-security-detail[data-phase="closingWidth"]{width:0;visibility:visible;opacity:0;transition-delay:0s}.nx-security-detail[data-phase="opening"],.nx-security-detail[data-phase="open"]{height:var(--nx-security-detail-height);pointer-events:auto}.nx-security-detail-copy{position:relative;z-index:1;display:grid;align-content:start;gap:7px;width:var(--nx-security-detail-width);padding:14px 16px;opacity:0;filter:blur(5px);transform:translateY(7px);transition:opacity .22s ease,filter .22s ease,transform .28s cubic-bezier(.22,1,.36,1)}.nx-security-detail[data-phase="opening"] .nx-security-detail-copy,.nx-security-detail[data-phase="open"] .nx-security-detail-copy{opacity:1;filter:none;transform:none;transition-delay:.1s}.nx-security-detail-copy strong{font-size:13px;font-weight:770}.nx-security-detail-copy p{margin:0;color:#ffffffa8;font-size:9.5px;line-height:1.5}.nx-security-detail-copy small{color:#ffccaa94;font-size:6.5px;font-weight:760;letter-spacing:.08em;text-transform:uppercase}
+      .nx-thread{display:grid;gap:14px;min-width:0}.nx-welcome[hidden]+.nx-thread{min-height:100%;align-content:end}.nx-thread article{display:flex;min-width:0;width:100%;flex-direction:column;align-items:flex-start}.nx-thread article.user{align-items:flex-end}.nx-thread label{margin:0 6px 5px;color:#ffffff9e;font-size:12px;font-weight:700}.nx-thread p{display:block;width:fit-content;height:auto;max-width:min(100%,360px);margin:0;padding:9px 14px;overflow:visible;border:1px solid #ffffff1f;border-radius:18px;color:#ffffffdd;background:#ffffff09;font-size:13px;line-height:1.42;white-space:pre-wrap;overflow-wrap:anywhere;word-break:normal}.nx-thread p a{color:#c7d8ff;text-decoration-color:#9eaeff8c;text-underline-offset:2px;overflow-wrap:anywhere}.nx-thread p a:hover{color:#fff;text-decoration-color:#fff}.nx-thread article.user p{width:auto;height:auto;max-width:82%;min-width:0;border-radius:18px 18px 6px 18px;background:#7a8cae20;overflow:visible}
       .nx-activity{position:relative;isolation:isolate;overflow:visible;width:max-content;padding:8px 14px;border:0;border-radius:999px;background:transparent;box-shadow:inset 0 0 0 1px #ffffff2b,inset 0 1px #ffffff1f,0 5px 16px #0005;color:#f4f5f7;font-size:13px;line-height:1.42;white-space:nowrap;backdrop-filter:blur(16px) saturate(145%);-webkit-backdrop-filter:blur(16px) saturate(145%);transition:width .14s ease-in-out}
       .nx-activity>span{position:relative;z-index:1}
       .nx-activity:before,.nx-activity:after{content:"";position:absolute;border-radius:inherit;pointer-events:none}
@@ -94,6 +97,7 @@
         .nx-shell[data-phase="widening"],.nx-shell[data-phase="opening"],.nx-shell[data-phase="open"],.nx-shell[data-phase="closingHeight"]{width:calc(100vw - 24px)}
         .nx-shell[data-phase="opening"],.nx-shell[data-phase="open"]{height:min(620px,calc(100dvh - 24px))}
         .nx-actions button{width:40px;height:40px}
+        .nx-head-slot{width:108px}.nx-status-strip[data-compact="true"]{width:108px;gap:4px}.nx-impact[data-compact="true"]{flex-basis:76px;width:76px;padding-inline:3px;gap:1px}.nx-impact[data-compact="true"] .nx-impact-metric strong{font-size:5.4px}.nx-status-strip[data-compact="true"] .nx-security{flex-basis:28px;width:28px;padding-inline:2px}.nx-status-strip[data-compact="true"] .nx-security-emoji{font-size:9px}.nx-status-strip[data-compact="true"] .nx-security-count{font-size:6.5px}
         .nx-composer{padding:5px}
         .nx-composer textarea{font-size:17px!important;line-height:22px;transform:translateY(-2px);-webkit-appearance:none;appearance:none;touch-action:manipulation}
         .nx-shell[data-keyboard="true"]{left:calc(var(--nx-vv-left) + 8px);top:calc(var(--nx-vv-top) + 8px);right:auto;bottom:auto;width:calc(var(--nx-vv-width) - 16px);height:calc(var(--nx-vv-height) - 16px);max-height:none;transition:width .22s ease,height .22s ease,top .22s ease,left .22s ease}
@@ -103,7 +107,7 @@
         .nx-shell[data-keyboard="true"] .nx-feed{padding:10px 12px 8px;mask-image:linear-gradient(to bottom,transparent,#000 10px,#000 calc(100% - 14px),transparent)}
         .nx-shell[data-keyboard="true"] .nx-welcome{display:none}
         .nx-shell[data-keyboard="true"] .nx-thread{min-height:100%;align-content:end}
-        .nx-shell[data-keyboard="true"] .nx-impact{display:none}
+        .nx-shell[data-keyboard="true"] .nx-status-strip{display:none}
         .nx-shell[data-keyboard="true"] .nx-foot{padding:6px 8px 7px}
         .nx-shell[data-keyboard="true"] .nx-fine{display:none}
       }
@@ -118,19 +122,21 @@
       <div class="nx-panel" aria-hidden="true">
         <header class="nx-head"><span class="nx-head-slot"></span><div class="nx-actions"><button class="nx-close" aria-label="Close Nyx"></button></div></header>
         <aside id="nx-impact-detail" class="nx-impact-detail" data-phase="closed" aria-hidden="true"><span class="nx-impact-detail-glass" aria-hidden="true"></span><div class="nx-impact-detail-copy"><strong>Nyx impact</strong><p>Live totals cover completed website responses. Electricity is a CPU-package estimate from a recycled Surface Pro 7—not whole-device wall power.</p><div class="nx-impact-detail-grid"><span>All visitors</span><b class="nx-impact-detail-total">Awaiting global total</b><span>Google reference</span><b>0.24 Wh · 0.03 g CO₂e</b><span>Nyx vs cloud</span><b class="nx-impact-detail-baseline">Matched test pending</b></div><small class="nx-impact-detail-note">Median Gemini text prompt, May 2025 · full-stack context only, not a savings claim</small><a class="nx-impact-detail-link" href="https://services.google.com/fh/files/misc/measuring_the_environmental_impact_of_delivering_ai_at_google_scale.pdf" target="_blank" rel="noopener noreferrer">Google methodology ↗</a><small class="nx-impact-detail-state">Starts with your first response</small><small class="nx-impact-detail-roadmap">Woodstock · EPA SRSO · wall meter next · solar planned, not active</small></div></aside>
-        <main class="nx-feed" aria-live="polite"><section class="nx-welcome"><section class="nx-intro"><h2>Ask me anything about Arjia.</h2><p>I can connect the dots across Arjia, ARES, CLU, Nyx, services, and project fit. Just type naturally.</p></section><aside class="nx-impact" data-state="pending" data-compact="false" tabindex="0" aria-label="Nyx electricity and emissions estimate" aria-describedby="nx-impact-detail"><span class="nx-impact-live"><i></i><span>Live</span></span><span class="nx-impact-metric"><strong class="nx-impact-electricity">— Wh</strong><small>Electricity</small></span><i class="nx-impact-divider"></i><span class="nx-impact-metric"><strong class="nx-impact-emissions">— g CO₂e</strong><small>Emissions</small></span><span class="nx-impact-state">Meter connection pending</span></aside></section><div class="nx-thread"></div></main>
+        <aside id="nx-security-detail" class="nx-security-detail" data-phase="closed" aria-hidden="true"><div class="nx-security-detail-copy"><strong>Prompt injections blocked</strong><p class="nx-security-detail-message">Nyx has not blocked an override attempt in this tab.</p><small>No prompt contents are stored</small></div></aside>
+        <main class="nx-feed" aria-live="polite"><section class="nx-welcome"><section class="nx-intro"><h2>Ask me anything about Arjia.</h2><p>I can connect the dots across Arjia, ARES, CLU, Nyx, services, and project fit. Just type naturally.</p></section><div class="nx-status-strip" data-compact="false"><aside class="nx-impact" data-state="pending" data-compact="false" tabindex="0" aria-label="Nyx electricity and emissions estimate" aria-describedby="nx-impact-detail"><span class="nx-impact-live"><i></i><span>Live</span></span><span class="nx-impact-metric"><strong class="nx-impact-electricity">— Wh</strong><small>Electricity</small></span><i class="nx-impact-divider"></i><span class="nx-impact-metric"><strong class="nx-impact-emissions">— g CO₂e</strong><small>Emissions</small></span><span class="nx-impact-state">Meter connection pending</span></aside><button class="nx-security" type="button" aria-label="Blocked prompt-injection attempts: 0" aria-expanded="false" aria-controls="nx-security-detail" title="Blocked prompt-injection attempts"><span class="nx-security-emoji" aria-hidden="true">😛</span><b class="nx-security-count" aria-live="polite">0</b></button></div></section><div class="nx-thread"></div></main>
         <footer class="nx-foot"><form class="nx-composer"><textarea rows="1" maxlength="900" placeholder="${base ? "Connecting to Nyx" : "Connect to Nyx"}" aria-label="Ask Nyx anything" disabled></textarea><button type="submit" aria-label="Send message" disabled>↗</button></form><div class="nx-fine"><span>Nyx runs on a recycled Surface Pro 7</span><span>Session only</span></div></footer>
       </div>
     </section>`
 
   document.body.appendChild(root)
   const $ = selector => root.querySelector(selector)
-  const shell = $(".nx-shell"), panel = $(".nx-panel"), feed = $(".nx-feed"), thread = $(".nx-thread"), welcome = $(".nx-welcome"), intro = $(".nx-intro"), headSlot = $(".nx-head-slot"), impact = $(".nx-impact"), impactDetail = $(".nx-impact-detail")
+  const shell = $(".nx-shell"), panel = $(".nx-panel"), feed = $(".nx-feed"), thread = $(".nx-thread"), welcome = $(".nx-welcome"), intro = $(".nx-intro"), headSlot = $(".nx-head-slot"), statusStrip = $(".nx-status-strip"), impact = $(".nx-impact"), impactDetail = $(".nx-impact-detail"), security = $(".nx-security"), securityDetail = $(".nx-security-detail")
   const textarea = $("textarea"), composer = $(".nx-composer"), sendButton = $(".nx-composer button"), statusCopy = $(".nx-status-copy")
-  const impactElectricity = $(".nx-impact-electricity"), impactEmissions = $(".nx-impact-emissions"), impactState = $(".nx-impact-state"), impactDetailState = $(".nx-impact-detail-state"), impactDetailTotal = $(".nx-impact-detail-total")
+  const impactElectricity = $(".nx-impact-electricity"), impactEmissions = $(".nx-impact-emissions"), impactState = $(".nx-impact-state"), impactDetailState = $(".nx-impact-detail-state"), impactDetailTotal = $(".nx-impact-detail-total"), securityCount = $(".nx-security-count"), securityDetailMessage = $(".nx-security-detail-message")
   let mobileViewportMaxHeight = window.visualViewport?.height || window.innerHeight
   let mobileComposerFocused = false
-  let phase = "closed", timers = [], status = base ? "connecting" : "preview", busy = false, controller = null, typingGlowTimer = null, thinkingGlowFrame = null, thinkingGlowTick = 0, thinkingSourceTick = 0, thinkingDotPhase = -1, healthFailures = 0, healthInFlight = false, impactCompact = false, impactAnimation = null, impactValues = null, impactResponseValues = {electricityWh:0,emissionsG:0}, impactMethod = "pending", impactScope = "session", impactCompletedResponses = 0, impactEstimatedResponses = 0, impactMovingUntil = 0, impactDetailPhase = "closed", impactDetailTimers = [], impactDetailCloseTimer = null, introExiting = false, introDismissed = false, introExitTimer = null
+  const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true
+  let phase = "closed", timers = [], status = base ? "connecting" : "preview", busy = false, controller = null, typingGlowTimer = null, thinkingGlowFrame = null, thinkingGlowTick = 0, thinkingSourceTick = 0, thinkingDotPhase = -1, healthFailures = 0, healthInFlight = false, impactCompact = false, impactAnimation = null, impactValues = null, impactResponseValues = {electricityWh:0,emissionsG:0}, impactMethod = "pending", impactScope = "session", impactCompletedResponses = 0, impactEstimatedResponses = 0, impactMovingUntil = 0, impactDetailPhase = "closed", impactDetailTimers = [], impactDetailCloseTimer = null, securityDetailPhase = "closed", securityDetailTimers = [], blockedInjectionCount = 0, securityPulseTimer = null, introExiting = false, introDismissed = false, introExitTimer = null
   const messages = []
   const lockMobileComposerScale = () => {
     if (mobileViewportQuery?.matches) textarea.style.setProperty("font-size","17px","important")
@@ -173,7 +179,7 @@
     if (["closed","closingHeight","closingWidth"].includes(phase)) return
     if (mobileComposerFocused) textarea.blur()
     syncMobileViewport()
-    closeImpactDetail(true);clearTimers();setPhase("closingHeight")
+    closeImpactDetail(true);closeSecurityDetail(true);clearTimers();setPhase("closingHeight")
     timers.push(setTimeout(() => setPhase("closingWidth"),860))
     timers.push(setTimeout(() => setPhase("closed"),1580))
   }
@@ -226,6 +232,39 @@
     if (impactDetailCloseTimer !== null) clearTimeout(impactDetailCloseTimer)
     impactDetailCloseTimer=setTimeout(()=>{impactDetailCloseTimer=null;closeImpactDetail(false)},110)
   }
+  const clearSecurityDetailTimers = () => { securityDetailTimers.forEach(clearTimeout);securityDetailTimers=[] }
+  const setSecurityDetailPhase = value => {
+    securityDetailPhase=value
+    securityDetail.dataset.phase=value
+    securityDetail.setAttribute("aria-hidden",String(value === "closed"))
+    security.setAttribute("aria-expanded",String(["widening","opening","open"].includes(value)))
+  }
+  const positionSecurityDetail = () => {
+    if (!["opening","open"].includes(phase)) return
+    const panelRect=panel.getBoundingClientRect(),securityRect=security.getBoundingClientRect()
+    const width=Math.min(258,Math.max(218,panelRect.width - 32))
+    const left=Math.min(Math.max(16,securityRect.right - panelRect.left - width),Math.max(16,panelRect.width - width - 16))
+    const detailHeight=102
+    const desiredTop=securityRect.bottom - panelRect.top + 8
+    const top=Math.min(desiredTop,panelRect.height - detailHeight - 20)
+    securityDetail.style.setProperty("--nx-security-detail-width",`${width}px`)
+    securityDetail.style.setProperty("--nx-security-detail-left",`${left}px`)
+    securityDetail.style.setProperty("--nx-security-detail-top",`${Math.max(62,top)}px`)
+  }
+  const openSecurityDetail = () => {
+    if (!["opening","open"].includes(phase) || ["widening","opening","open"].includes(securityDetailPhase)) return
+    closeImpactDetail(true);clearSecurityDetailTimers();positionSecurityDetail();setSecurityDetailPhase("widening")
+    if (prefersReducedMotion) { setSecurityDetailPhase("open");return }
+    securityDetailTimers.push(setTimeout(()=>setSecurityDetailPhase("opening"),340))
+    securityDetailTimers.push(setTimeout(()=>setSecurityDetailPhase("open"),720))
+  }
+  const closeSecurityDetail = immediate => {
+    if (immediate || prefersReducedMotion) { clearSecurityDetailTimers();setSecurityDetailPhase("closed");return }
+    if (["closed","closingHeight","closingWidth"].includes(securityDetailPhase)) return
+    clearSecurityDetailTimers();setSecurityDetailPhase("closingHeight")
+    securityDetailTimers.push(setTimeout(()=>setSecurityDetailPhase("closingWidth"),380))
+    securityDetailTimers.push(setTimeout(()=>setSecurityDetailPhase("closed"),720))
+  }
   const escape = text => String(text).replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]))
   const dismissIntro = () => {
     if (introExiting || introDismissed) return
@@ -262,6 +301,31 @@
     interaction_action:"ask",
     public_scope:"arjia",
   })
+  const blockedInjectionStorageKey = "arjia.nyx.blockedPromptInjections.v1"
+  const getBlockedInjectionCount = () => {
+    try {
+      const count=Number.parseInt(sessionStorage.getItem(blockedInjectionStorageKey) || "0",10)
+      return Number.isInteger(count) && count >= 0 ? Math.min(count,9999) : 0
+    } catch { return 0 }
+  }
+  const updateBlockedInjectionUi = () => {
+    const countLabel=blockedInjectionCount === 1 ? "attempt" : "attempts"
+    securityCount.textContent=String(blockedInjectionCount)
+    security.setAttribute("aria-label",`Blocked prompt-injection attempts: ${blockedInjectionCount}`)
+    securityDetailMessage.textContent=blockedInjectionCount
+      ? `Nyx stopped ${blockedInjectionCount} ${countLabel} to override its rules or expose protected information.`
+      : "Nyx has not blocked an override attempt in this tab."
+  }
+  const incrementBlockedInjectionCount = () => {
+    blockedInjectionCount=Math.min(9999,blockedInjectionCount + 1)
+    try { sessionStorage.setItem(blockedInjectionStorageKey,String(blockedInjectionCount)) } catch {}
+    updateBlockedInjectionUi()
+    security.dataset.pulse="false"
+    void security.offsetWidth
+    security.dataset.pulse="true"
+    if (securityPulseTimer !== null) clearTimeout(securityPulseTimer)
+    securityPulseTimer=setTimeout(()=>{securityPulseTimer=null;security.dataset.pulse="false"},420)
+  }
   const impactStorageKey = "arjia.nyx.impact.v2"
   const loadStoredImpact = () => {
     try {
@@ -384,30 +448,32 @@
   }
   const setImpactCompact = compact => {
     if (impactCompact === compact) return
-    closeImpactDetail(true)
-    const from = impact.getBoundingClientRect()
+    closeImpactDetail(true);closeSecurityDetail(true)
+    const from = statusStrip.getBoundingClientRect()
     impactCompact = compact
     impactMovingUntil = Date.now() + 760
-    impact.style.transition = "none"
+    statusStrip.style.transition = "none"
+    statusStrip.dataset.compact = String(compact)
     impact.dataset.compact = String(compact)
     if (compact) {
-      headSlot.appendChild(impact)
+      headSlot.appendChild(statusStrip)
       welcome.hidden = introDismissed
     } else {
       welcome.hidden = false
-      welcome.prepend(impact)
+      welcome.appendChild(statusStrip)
     }
     intro.hidden = introDismissed
+    if (prefersReducedMotion) { statusStrip.style.removeProperty("transition");positionImpactDetail();positionSecurityDetail();return }
     requestAnimationFrame(() => {
-      const to = impact.getBoundingClientRect()
+      const to = statusStrip.getBoundingClientRect()
       const dx = from.left - to.left, dy = from.top - to.top
       const sx = to.width ? from.width / to.width : 1, sy = to.height ? from.height / to.height : 1
       impactAnimation?.cancel()
-      impactAnimation = impact.animate([
+      impactAnimation = statusStrip.animate([
         {transform:`translate(${dx}px,${dy}px) scale(${sx},${sy})`,opacity:.92},
         {transform:"translate(0,0) scale(1,1)",opacity:1},
       ],{duration:720,easing:"cubic-bezier(.22,1,.36,1)"})
-      impactAnimation.addEventListener("finish",()=>{impact.style.removeProperty("transition");impactAnimation=null;positionImpactDetail()},{once:true})
+      impactAnimation.addEventListener("finish",()=>{statusStrip.style.removeProperty("transition");impactAnimation=null;positionImpactDetail();positionSecurityDetail()},{once:true})
     })
   }
   const shortSourceTopics = refs => {
@@ -477,8 +543,8 @@
     try {
       const response = await fetch(`${base}/v1/chat`,{method:"POST",headers:{"Content-Type":"application/json",Accept:"text/event-stream"},body:JSON.stringify({message:question,...routed,history:messages.filter(item=>item.text).slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,1400)}))}),signal:controller.signal})
       if (!response.ok || !response.body) throw new Error("offline")
-      const reader=response.body.getReader(),decoder=new TextDecoder();let buffer=""
-      const consume=block=>{let event="",raw="";block.split("\n").forEach(line=>{if(line.startsWith("event:"))event=line.slice(6).trim();if(line.startsWith("data:"))raw+=line.slice(5).trimStart()});let data;try{data=JSON.parse(raw)}catch{return}if(event==="token"&&typeof data?.text==="string"){assistant.text+=data.text;render()}if(event==="citations"&&Array.isArray(data)){assistant.refs=data.filter(item=>typeof item?.id==="string");assistant.sourceTopics=shortSourceTopics(assistant.refs);assistant.sourceIndex=0;thinkingSourceTick=performance.now();render()}if(event==="impact")consumeImpact(data);if(event==="error")throw new Error(data?.message||"offline")}
+      const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",securityCounted=false
+      const consume=block=>{let event="",raw="";block.split("\n").forEach(line=>{if(line.startsWith("event:"))event=line.slice(6).trim();if(line.startsWith("data:"))raw+=line.slice(5).trimStart()});let data;try{data=JSON.parse(raw)}catch{return}if(event==="security"&&!securityCounted&&data?.kind==="prompt_injection_blocked"&&data?.blocked===true&&data?.countable===true){securityCounted=true;incrementBlockedInjectionCount()}if(event==="token"&&typeof data?.text==="string"){assistant.text+=data.text;render()}if(event==="citations"&&Array.isArray(data)){assistant.refs=data.filter(item=>typeof item?.id==="string");assistant.sourceTopics=shortSourceTopics(assistant.refs);assistant.sourceIndex=0;thinkingSourceTick=performance.now();render()}if(event==="impact")consumeImpact(data);if(event==="error")throw new Error(data?.message||"offline")}
       while(true){const chunk=await reader.read();buffer+=decoder.decode(chunk.value||new Uint8Array(),{stream:!chunk.done}).replace(/\r\n/g,"\n");let boundary;while((boundary=buffer.indexOf("\n\n"))>=0){consume(buffer.slice(0,boundary));buffer=buffer.slice(boundary+2)}if(chunk.done)break}if(buffer.trim())consume(buffer)
       assistant.live=false;render()
     } catch(error) {
@@ -492,7 +558,10 @@
   impact.addEventListener("blur",scheduleImpactDetailClose)
   impactDetail.addEventListener("mouseenter",openImpactDetail)
   impactDetail.addEventListener("mouseleave",scheduleImpactDetailClose)
-  window.addEventListener("resize",positionImpactDetail)
+  security.addEventListener("click",event=>{event.stopPropagation();securityDetailPhase === "closed" ? openSecurityDetail() : closeSecurityDetail(false)})
+  securityDetail.addEventListener("click",event=>event.stopPropagation())
+  document.addEventListener("pointerdown",event=>{if(securityDetailPhase !== "closed"&&!security.contains(event.target)&&!securityDetail.contains(event.target))closeSecurityDetail(false)})
+  window.addEventListener("resize",()=>{positionImpactDetail();positionSecurityDetail()})
   window.visualViewport?.addEventListener("resize",syncMobileViewport)
   window.visualViewport?.addEventListener("scroll",syncMobileViewport)
   window.addEventListener("orientationchange",()=>setTimeout(syncMobileViewport,120))
@@ -527,5 +596,7 @@
     impactCompletedResponses = storedImpact.completedResponses
     impactEstimatedResponses = storedImpact.estimatedResponses
   }
+  blockedInjectionCount=getBlockedInjectionCount()
+  updateBlockedInjectionUi()
   syncMobileViewport();updateImpact();syncComposer();setStatus(status);health();refreshGlobalImpact();if(base){setInterval(health,12000);setInterval(refreshGlobalImpact,15000)}
 })()
