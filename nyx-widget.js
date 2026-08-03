@@ -91,6 +91,7 @@
       .nx-activity:after{z-index:-1;inset:var(--nx-thinking-glow-inset);padding:var(--nx-thinking-glow-padding);background:conic-gradient(from var(--nx-thinking-angle-b),#2edbffbf 0%,#4df08fb8 16%,#ff8fa3b8 34%,#ff334db8 50%,#ff8fa3b8 66%,#9e66ffbf 84%,#2edbffbf 100%);filter:blur(var(--nx-thinking-glow-blur)) saturate(1.04);opacity:var(--nx-thinking-glow-opacity);transform:translateZ(0);will-change:filter,transform,opacity;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:nx-thinking-ring-b 9.4s linear infinite}
       .nx-thinking-dots{display:inline}
       .nx-foot{padding:9px 13px 11px;border-top:1px solid #ffffff14;background:#05080e2e}.nx-composer{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) 28px;align-items:center;gap:5px;padding:3px;border:1px solid #dfe4ec26;border-radius:24px;background:#ffffff05;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:border-color .70s ease-in-out,box-shadow .70s ease-in-out}.nx-composer:before,.nx-composer:after{content:"";position:absolute;z-index:-1;inset:-1.5px;padding:1.5px;border-radius:inherit;background:conic-gradient(from var(--nx-angle),#2edbff,#4df08f,#ff8fa3,#ff334d,#ff8fa3,#9e66ff,#2edbff);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;pointer-events:none;animation:nx-ring 5.2s linear infinite;animation-play-state:paused;transition:opacity .70s ease-in-out}.nx-composer:after{inset:-6px;padding:4px;filter:blur(8px);opacity:0}.nx-composer[data-active="true"]{border-color:transparent;box-shadow:0 0 22px #788dff20;transition-duration:.55s}.nx-composer[data-active="true"]:before{opacity:1;animation-play-state:running;transition-duration:.55s}.nx-composer[data-active="true"]:after{opacity:.2;animation-play-state:running;transition-duration:.55s}.nx-composer textarea{display:block;width:100%;min-height:28px;max-height:88px;padding:6px 8px 0;resize:none;transform:translateY(2px);border:0;outline:0;color:#f5f6f9;background:transparent;font-size:13px;line-height:22px}.nx-composer textarea::placeholder{color:#ffffff57}.nx-composer button{align-self:center;justify-self:center;display:grid;place-items:center;width:24px;height:24px;padding:0;border:1px solid #ffffff1f;border-radius:50%;color:#fff;background:#ffffff12;cursor:pointer}.nx-composer button:disabled{opacity:.4}.nx-fine{display:flex;justify-content:space-between;margin:7px 3px 0;color:#ffffff45;font-size:6px;font-weight:760;letter-spacing:.09em;text-transform:uppercase}
+      .nx-consent{position:absolute;z-index:25;inset:58px 0 0;display:grid;place-items:center;padding:20px;background:linear-gradient(145deg,#11172282,#070a10d9);backdrop-filter:blur(30px) saturate(145%);-webkit-backdrop-filter:blur(30px) saturate(145%);transition:opacity .28s ease,filter .28s ease,visibility 0s linear 0s}.nx-consent[hidden]{display:none}.nx-consent-card{width:min(100%,340px);padding:20px;border:1px solid #ffffff24;border-radius:22px;background:linear-gradient(145deg,#ffffff13,#ffffff07),#090d14c9;box-shadow:inset 0 1px #ffffff2c,0 22px 60px #0007}.nx-consent-eyebrow{display:block;margin-bottom:8px;color:#9edaff;font-size:7px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.nx-consent-card h2{margin:0 0 9px;font-size:19px;letter-spacing:-.025em}.nx-consent-card p{margin:0;color:#ffffffa8;font-size:10.5px;line-height:1.52}.nx-consent-card p+p{margin-top:7px;color:#ffffff73}.nx-consent-actions{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:16px}.nx-consent-actions button,.nx-consent-actions a{display:grid;place-items:center;min-height:36px;padding:0 14px;border:1px solid #ffffff22;border-radius:999px;font-size:10px;font-weight:730;text-decoration:none;cursor:pointer}.nx-consent-allow{color:#07111a;background:#d9f1ff;border-color:#d9f1ff!important}.nx-consent-decline{color:#ffffffb5;background:#ffffff08}.nx-consent-actions button:focus-visible,.nx-consent-actions a:focus-visible{outline:2px solid #fff;outline-offset:3px}.nx-consent-privacy{grid-column:1/-1;width:max-content;min-height:auto!important;padding:3px 0!important;border:0!important;border-radius:0!important;color:#9edaff;background:transparent;text-decoration:underline!important;text-underline-offset:3px}.nx-fine span:last-child{white-space:nowrap}
       @media(max-width:600px){
         #arjia-nyx-widget{--nx-right:12px;--nx-bottom:max(12px,env(safe-area-inset-bottom));--nx-vv-left:0px;--nx-vv-top:0px;--nx-vv-width:100vw;--nx-vv-height:100dvh}
         .nx-glass{background:linear-gradient(142deg,#ffffff14,#ffffff04 44%,#0508121f),rgba(7,10,16,.32)}
@@ -106,6 +107,7 @@
         .nx-shell[data-keyboard="true"] .nx-brand small{margin-top:5px}
         .nx-shell[data-keyboard="true"] .nx-feed{padding:10px 12px 8px;mask-image:linear-gradient(to bottom,transparent,#000 10px,#000 calc(100% - 14px),transparent)}
         .nx-shell[data-keyboard="true"] .nx-welcome{display:none}
+        .nx-consent{padding:12px}.nx-consent-card{padding:16px;border-radius:18px}.nx-consent-actions{grid-template-columns:1fr}.nx-consent-privacy{grid-column:1}
         .nx-shell[data-keyboard="true"] .nx-thread{min-height:100%;align-content:end}
         .nx-shell[data-keyboard="true"] .nx-status-strip{display:none}
         .nx-shell[data-keyboard="true"] .nx-foot{padding:6px 8px 7px}
@@ -122,17 +124,40 @@
       <div class="nx-panel" aria-hidden="true">
         <header class="nx-head"><span class="nx-head-slot"></span><div class="nx-actions"><button class="nx-security" type="button" aria-label="Blocked prompt-injection attempts: 0" aria-expanded="false" aria-controls="nx-security-detail" title="Blocked prompt-injection attempts"><span class="nx-security-mark" aria-hidden="true">X</span><b class="nx-security-count" aria-live="polite">0</b></button><button class="nx-close" aria-label="Close Nyx"></button></div></header>
         <aside id="nx-impact-detail" class="nx-impact-detail" data-phase="closed" aria-hidden="true"><span class="nx-impact-detail-glass" aria-hidden="true"></span><div class="nx-impact-detail-copy"><strong>Nyx impact</strong><p>Live totals cover completed website responses. Electricity is a CPU-package estimate from a recycled Surface Pro 7—not whole-device wall power.</p><div class="nx-impact-detail-grid"><span>All visitors</span><b class="nx-impact-detail-total">Awaiting global total</b><span>Google reference</span><b>0.24 Wh · 0.03 g CO₂e</b><span>Nyx vs cloud</span><b class="nx-impact-detail-baseline">Matched test pending</b></div><small class="nx-impact-detail-note">Median Gemini text prompt, May 2025 · full-stack context only, not a savings claim</small><a class="nx-impact-detail-link" href="https://services.google.com/fh/files/misc/measuring_the_environmental_impact_of_delivering_ai_at_google_scale.pdf" target="_blank" rel="noopener noreferrer">Google methodology ↗</a><small class="nx-impact-detail-state">Starts with your first response</small><small class="nx-impact-detail-roadmap">Woodstock · EPA SRSO · wall meter next · solar planned, not active</small></div></aside>
-        <aside id="nx-security-detail" class="nx-security-detail" data-phase="closed" aria-hidden="true"><div class="nx-security-detail-copy"><strong>Prompt injections blocked</strong><p class="nx-security-detail-message">Nyx has not blocked an override attempt in this tab.</p><small>No prompt contents are stored</small></div></aside>
+        <aside id="nx-security-detail" class="nx-security-detail" data-phase="closed" aria-hidden="true"><div class="nx-security-detail-copy"><strong>Prompt injections blocked</strong><p class="nx-security-detail-message">Nyx has not blocked an override attempt in this tab.</p><small>Blocked prompt contents are not stored</small></div></aside>
+        <section class="nx-consent" role="dialog" aria-modal="true" aria-labelledby="nx-consent-title"><div class="nx-consent-card"><span class="nx-consent-eyebrow">Privacy notice</span><h2 id="nx-consent-title">Before you chat</h2><p>Nyx stores your messages, its replies, and your IP address in protected local storage on Arjia’s Surface for 30 days to improve quality, investigate problems, and prevent abuse.</p><p>Do not enter passwords, confidential business information, health details, financial information, or other sensitive data.</p><div class="nx-consent-actions"><button class="nx-consent-allow" type="button">Allow and chat</button><button class="nx-consent-decline" type="button">Not now</button><a class="nx-consent-privacy" href="${String(config.privacyUrl || "https://arjia.tech/legal-pages/privacy-policy")}" target="_blank" rel="noopener noreferrer">Read the Privacy Policy</a></div></div></section>
         <main class="nx-feed" aria-live="polite"><section class="nx-welcome"><section class="nx-intro"><h2>Ask me anything about Arjia.</h2><p>I can connect the dots across Arjia, ARES, CLU, Nyx, services, and project fit. Just type naturally.</p></section><div class="nx-status-strip" data-compact="false"><aside class="nx-impact" data-state="pending" data-compact="false" tabindex="0" aria-label="Nyx electricity and emissions estimate" aria-describedby="nx-impact-detail"><span class="nx-impact-live"><i></i><span>Live</span></span><span class="nx-impact-metric"><strong class="nx-impact-electricity">— Wh</strong><small>Electricity</small></span><i class="nx-impact-divider"></i><span class="nx-impact-metric"><strong class="nx-impact-emissions">— g CO₂e</strong><small>Emissions</small></span><span class="nx-impact-state">Meter connection pending</span></aside></div></section><div class="nx-thread"></div></main>
-        <footer class="nx-foot"><form class="nx-composer"><textarea rows="1" maxlength="900" placeholder="${base ? "Connecting to Nyx" : "Connect to Nyx"}" aria-label="Ask Nyx anything" disabled></textarea><button type="submit" aria-label="Send message" disabled>↗</button></form><div class="nx-fine"><span>Nyx runs on a recycled Surface Pro 7</span><span>Session only</span></div></footer>
+        <footer class="nx-foot"><form class="nx-composer"><textarea rows="1" maxlength="900" placeholder="${base ? "Connecting to Nyx" : "Connect to Nyx"}" aria-label="Ask Nyx anything" disabled></textarea><button type="submit" aria-label="Send message" disabled>↗</button></form><div class="nx-fine"><span>Nyx runs on a recycled Surface Pro 7</span><span>Chats stored 30 days</span></div></footer>
       </div>
     </section>`
 
   document.body.appendChild(root)
   const $ = selector => root.querySelector(selector)
   const shell = $(".nx-shell"), panel = $(".nx-panel"), feed = $(".nx-feed"), thread = $(".nx-thread"), welcome = $(".nx-welcome"), intro = $(".nx-intro"), headSlot = $(".nx-head-slot"), statusStrip = $(".nx-status-strip"), impact = $(".nx-impact"), impactDetail = $(".nx-impact-detail"), security = $(".nx-security"), securityDetail = $(".nx-security-detail")
-  const textarea = $("textarea"), composer = $(".nx-composer"), sendButton = $(".nx-composer button"), statusCopy = $(".nx-status-copy")
+  const textarea = $("textarea"), composer = $(".nx-composer"), sendButton = $(".nx-composer button"), statusCopy = $(".nx-status-copy"), consentDialog = $(".nx-consent"), consentAllow = $(".nx-consent-allow"), consentDecline = $(".nx-consent-decline")
   const impactElectricity = $(".nx-impact-electricity"), impactEmissions = $(".nx-impact-emissions"), impactState = $(".nx-impact-state"), impactDetailState = $(".nx-impact-detail-state"), impactDetailTotal = $(".nx-impact-detail-total"), securityCount = $(".nx-security-count"), securityDetailMessage = $(".nx-security-detail-message")
+  const conversationConsentVersion = "2026-08-03"
+  const conversationConsentStorageKey = "arjia.nyx.conversationLoggingConsent.v1"
+  const conversationIdStorageKey = "arjia.nyx.conversationId.v1"
+  const visitorSessionStorageKey = "arjia.nyx.visitorSessionId.v1"
+  const uuid = () => typeof globalThis.crypto?.randomUUID === "function" ? globalThis.crypto.randomUUID() : "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,character=>{const value=Math.random()*16|0;return(character === "x" ? value : value&3|8).toString(16)})
+  const readSessionUuid = key => {
+    try {
+      const stored=sessionStorage.getItem(key)
+      if (/^[0-9a-f-]{36}$/i.test(stored || "")) return stored
+      const created=uuid();sessionStorage.setItem(key,created);return created
+    } catch { return uuid() }
+  }
+  const getLoggingConsent = () => {
+    try {
+      const stored=JSON.parse(sessionStorage.getItem(conversationConsentStorageKey) || "null")
+      return stored?.allowed === true && stored?.version === conversationConsentVersion
+    } catch { return false }
+  }
+  const conversationId=readSessionUuid(conversationIdStorageKey)
+  const visitorSessionId=readSessionUuid(visitorSessionStorageKey)
+  let loggingConsent=getLoggingConsent()
+  consentDialog.hidden=loggingConsent
   let mobileViewportMaxHeight = window.visualViewport?.height || window.innerHeight
   let mobileComposerFocused = false
   const prefersReducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true
@@ -166,14 +191,14 @@
   const setStatus = value => {
     status = value; shell.dataset.status = value
     statusCopy.textContent = value === "online" ? "Online" : value === "offline" ? "Unavailable" : value === "connecting" ? "Connecting" : "Preview"
-    textarea.disabled = value !== "online"; sendButton.disabled = value !== "online" || !textarea.value.trim()
-    textarea.placeholder = value === "online" ? "Ask Nyx anything" : value === "offline" ? "Nyx is temporarily unavailable" : value === "connecting" ? "Connecting to Nyx" : "Connect to Nyx"
+    textarea.disabled = value !== "online" || !loggingConsent; sendButton.disabled = value !== "online" || !loggingConsent || !textarea.value.trim()
+    textarea.placeholder = value === "online" ? loggingConsent ? "Ask Nyx anything" : "Review privacy notice" : value === "offline" ? "Nyx is temporarily unavailable" : value === "connecting" ? "Connecting to Nyx" : "Connect to Nyx"
   }
   const open = () => {
     if (!["closed","closingHeight","closingWidth"].includes(phase)) return
     clearTimers(); setPhase("widening")
     timers.push(setTimeout(() => setPhase("opening"),720))
-    timers.push(setTimeout(() => { setPhase("open");if(!mobileViewportQuery?.matches)textarea.focus();syncMobileViewport() },1580))
+    timers.push(setTimeout(() => { setPhase("open");if(!mobileViewportQuery?.matches)(loggingConsent ? textarea : consentAllow).focus();syncMobileViewport() },1580))
   }
   const close = () => {
     if (["closed","closingHeight","closingWidth"].includes(phase)) return
@@ -534,6 +559,7 @@
     requestAnimationFrame(() => feed.scrollTo({top:introExiting || Date.now() < impactMovingUntil ? 0 : feed.scrollHeight,behavior:"auto"}))
   }
   const ask = async question => {
+    if (!loggingConsent) { consentDialog.hidden=false;consentAllow.focus();return }
     if (!base || busy || status !== "online") return
     const routed = routeQuestion(question)
     const assistant = {role:"assistant",text:"",live:true,refs:[],sourceTopics:[],sourceIndex:0}
@@ -541,14 +567,16 @@
     impactResponseValues = {electricityWh:0,emissionsG:0}
     messages.push({role:"user",text:question},assistant); busy = true; updateImpact(impactValues,"measuring"); render(); controller?.abort(); controller = new AbortController()
     try {
-      const response = await fetch(`${base}/v1/chat`,{method:"POST",headers:{"Content-Type":"application/json",Accept:"text/event-stream"},body:JSON.stringify({message:question,...routed,history:messages.filter(item=>item.text).slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,1400)}))}),signal:controller.signal})
+      const response = await fetch(`${base}/v1/chat`,{method:"POST",headers:{"Content-Type":"application/json",Accept:"text/event-stream"},body:JSON.stringify({message:question,...routed,conversation_id:conversationId,turn_id:uuid(),visitor_session_id:visitorSessionId,logging_consent:true,consent_version:conversationConsentVersion,history:messages.filter(item=>item.text).slice(-9,-1).map(item=>({role:item.role,content:item.text.slice(0,1400)}))}),signal:controller.signal})
+      if(response.status===428){const error=new Error("consent required");error.name="ConsentRequired";throw error}
       if (!response.ok || !response.body) throw new Error("offline")
       const reader=response.body.getReader(),decoder=new TextDecoder();let buffer="",securityCounted=false
       const consume=block=>{let event="",raw="";block.split("\n").forEach(line=>{if(line.startsWith("event:"))event=line.slice(6).trim();if(line.startsWith("data:"))raw+=line.slice(5).trimStart()});let data;try{data=JSON.parse(raw)}catch{return}if(event==="security"&&!securityCounted&&data?.kind==="prompt_injection_blocked"&&data?.blocked===true&&data?.countable===true){securityCounted=true;incrementBlockedInjectionCount()}if(event==="token"&&typeof data?.text==="string"){assistant.text+=data.text;render()}if(event==="citations"&&Array.isArray(data)){assistant.refs=data.filter(item=>typeof item?.id==="string");assistant.sourceTopics=shortSourceTopics(assistant.refs);assistant.sourceIndex=0;thinkingSourceTick=performance.now();render()}if(event==="impact")consumeImpact(data);if(event==="error")throw new Error(data?.message||"offline")}
       while(true){const chunk=await reader.read();buffer+=decoder.decode(chunk.value||new Uint8Array(),{stream:!chunk.done}).replace(/\r\n/g,"\n");let boundary;while((boundary=buffer.indexOf("\n\n"))>=0){consume(buffer.slice(0,boundary));buffer=buffer.slice(boundary+2)}if(chunk.done)break}if(buffer.trim())consume(buffer)
       assistant.live=false;render()
     } catch(error) {
-      if(error.name!=="AbortError"){setStatus("offline");assistant.live=false;assistant.text=assistant.text||"I can’t reach the local Nyx edge right now. Your message was not sent to a hosted model.";render()}
+      if(error.name==="ConsentRequired"){loggingConsent=false;try{sessionStorage.removeItem(conversationConsentStorageKey)}catch{}consentDialog.hidden=false;assistant.live=false;assistant.text="Please review the privacy notice before continuing.";syncComposer();render();consentAllow.focus()}
+      else if(error.name!=="AbortError"){setStatus("offline");assistant.live=false;assistant.text=assistant.text||"I can’t reach the local Nyx edge right now. Your message was not sent to a hosted model.";render()}
     } finally { busy=false;controller=null;if(!impactValues)updateImpact(null,"pending");refreshGlobalImpact() }
   }
   $(".nx-launcher").addEventListener("click",open);$(".nx-close").addEventListener("click",close)
@@ -568,7 +596,9 @@
   const setComposerGlow = active => { composer.dataset.active = String(active) }
   const stopComposerGlow = () => { if(typingGlowTimer!==null)clearTimeout(typingGlowTimer);typingGlowTimer=null;setComposerGlow(false) }
   const pulseComposerGlow = () => { if(typingGlowTimer!==null)clearTimeout(typingGlowTimer);setComposerGlow(true);typingGlowTimer=setTimeout(()=>{typingGlowTimer=null;setComposerGlow(false)},400) }
-  const syncComposer = ({typing=false}={}) => { if(typing)pulseComposerGlow();sendButton.disabled=busy||status!=="online"||!textarea.value.trim() }
+  const syncComposer = ({typing=false}={}) => { if(typing)pulseComposerGlow();textarea.disabled=status!=="online"||!loggingConsent;sendButton.disabled=busy||status!=="online"||!loggingConsent||!textarea.value.trim() }
+  consentAllow.addEventListener("click",()=>{loggingConsent=true;try{sessionStorage.setItem(conversationConsentStorageKey,JSON.stringify({allowed:true,version:conversationConsentVersion,accepted_at:new Date().toISOString()}))}catch{}consentDialog.hidden=true;setStatus(status);syncComposer();textarea.focus()})
+  consentDecline.addEventListener("click",()=>{loggingConsent=false;try{sessionStorage.removeItem(conversationConsentStorageKey)}catch{}consentDialog.hidden=false;syncComposer();close()})
   composer.addEventListener("submit",event=>{event.preventDefault();const question=textarea.value.trim();if(!question)return;textarea.value="";syncComposer();ask(question)})
   textarea.addEventListener("input",()=>syncComposer({typing:true}))
   textarea.addEventListener("pointerdown",lockMobileComposerScale,{passive:true})
