@@ -25,7 +25,7 @@ test("counter copy, singular and plural wording, and accessibility are present",
   assert.match(source, /Blocked prompt-injection attempts:/)
   assert.match(source, /aria-controls="nx-security-detail"/)
   assert.match(source, /aria-expanded="false"/)
-  assert.match(source, /No prompt contents are stored/)
+  assert.match(source, /Blocked prompt contents are not stored/)
 })
 
 test("security counter is a fixed header control with a glowing X", () => {
@@ -46,4 +46,32 @@ test("mobile and reduced-motion protections are retained", () => {
   assert.match(source, /\.nx-head-slot\{width:76px\}/)
   assert.match(source, /prefersReducedMotion/)
   assert.match(source, /@media\(prefers-reduced-motion:reduce\)/)
+})
+
+test("chat logging is disclosed and requires versioned affirmative consent", () => {
+  assert.match(source, /Before you chat/)
+  assert.match(source, /stores your messages, its replies, and your IP address in protected local storage/)
+  assert.match(source, /30 days/)
+  assert.match(source, /Allow and chat/)
+  assert.match(source, /https:\/\/arjia\.tech\/legal-pages\/privacy-policy/)
+  assert.match(source, /logging_consent:true/)
+  assert.match(source, /consent_version:conversationConsentVersion/)
+  assert.match(source, /conversation_id:conversationId/)
+  assert.match(source, /turn_id:uuid\(\)/)
+  assert.match(source, /visitor_session_id:visitorSessionId/)
+})
+
+test("consent and conversation identifiers last only for the current browser tab", () => {
+  assert.match(source, /sessionStorage\.setItem\(conversationConsentStorageKey/)
+  assert.match(source, /sessionStorage\.setItem\(key,created\)/)
+  assert.match(source, /arjia\.nyx\.conversationLoggingConsent\.v1/)
+  assert.match(source, /arjia\.nyx\.conversationId\.v1/)
+  assert.match(source, /arjia\.nyx\.visitorSessionId\.v1/)
+  assert.doesNotMatch(source, /ip_address|client_ip|cf-connecting-ip/i)
+})
+
+test("the updated copy distinguishes stored chats from blocked injection bodies", () => {
+  assert.match(source, /Blocked prompt contents are not stored/)
+  assert.match(source, /Chats stored 30 days/)
+  assert.doesNotMatch(source, />Session only</)
 })
