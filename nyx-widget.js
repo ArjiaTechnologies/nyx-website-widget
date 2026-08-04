@@ -597,7 +597,16 @@
   const stopComposerGlow = () => { if(typingGlowTimer!==null)clearTimeout(typingGlowTimer);typingGlowTimer=null;setComposerGlow(false) }
   const pulseComposerGlow = () => { if(typingGlowTimer!==null)clearTimeout(typingGlowTimer);setComposerGlow(true);typingGlowTimer=setTimeout(()=>{typingGlowTimer=null;setComposerGlow(false)},400) }
   const syncComposer = ({typing=false}={}) => { if(typing)pulseComposerGlow();textarea.disabled=status!=="online"||!loggingConsent;sendButton.disabled=busy||status!=="online"||!loggingConsent||!textarea.value.trim() }
-  consentAllow.addEventListener("click",()=>{loggingConsent=true;try{sessionStorage.setItem(conversationConsentStorageKey,JSON.stringify({allowed:true,version:conversationConsentVersion,accepted_at:new Date().toISOString()}))}catch{}consentDialog.hidden=true;setStatus(status);syncComposer();textarea.focus()})
+  const focusComposerAfterConsent = () => {
+    if (mobileViewportQuery?.matches) {
+      mobileComposerFocused=false
+      if (document.activeElement === textarea) textarea.blur()
+      syncMobileViewport()
+      return
+    }
+    textarea.focus()
+  }
+  consentAllow.addEventListener("click",()=>{loggingConsent=true;try{sessionStorage.setItem(conversationConsentStorageKey,JSON.stringify({allowed:true,version:conversationConsentVersion,accepted_at:new Date().toISOString()}))}catch{}consentDialog.hidden=true;setStatus(status);syncComposer();focusComposerAfterConsent()})
   consentDecline.addEventListener("click",()=>{loggingConsent=false;try{sessionStorage.removeItem(conversationConsentStorageKey)}catch{}consentDialog.hidden=false;syncComposer();close()})
   composer.addEventListener("submit",event=>{event.preventDefault();const question=textarea.value.trim();if(!question)return;textarea.value="";syncComposer();ask(question)})
   textarea.addEventListener("input",()=>syncComposer({typing:true}))

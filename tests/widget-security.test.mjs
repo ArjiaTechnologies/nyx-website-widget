@@ -71,6 +71,12 @@ test("consent and conversation identifiers last only for the current browser tab
   assert.doesNotMatch(source, /ip_address|client_ip|cf-connecting-ip/i)
 })
 
+test("accepting consent does not summon the mobile keyboard", () => {
+  assert.match(source, /const focusComposerAfterConsent = \(\) => \{[\s\S]*mobileViewportQuery\?\.matches[\s\S]*mobileComposerFocused=false[\s\S]*syncMobileViewport\(\)[\s\S]*return[\s\S]*textarea\.focus\(\)/)
+  assert.match(source, /consentAllow\.addEventListener\("click",[\s\S]*focusComposerAfterConsent\(\)/)
+  assert.doesNotMatch(source, /consentAllow\.addEventListener\("click",[^\n]*syncComposer\(\);textarea\.focus\(\)/)
+})
+
 test("the updated copy distinguishes stored chats from blocked injection bodies", () => {
   assert.match(source, /Blocked prompt contents are not stored/)
   assert.match(source, /Chats stored 30 days/)
